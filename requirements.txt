@@ -1,0 +1,6 @@
+potassium>=0.0.9
+torch
+transformers
+diffusers
+accelerate
+opencv-contrib-python
