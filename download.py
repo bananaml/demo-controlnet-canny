@@ -3,10 +3,10 @@ import torch
 
 def download_model():
     controlnet = ControlNetModel.from_pretrained(
-        "lllyasviel/sd-controlnet-canny", torch_dtype=torch.float16
+        "lllyasviel/sd-controlnet-canny"
     ).to("cuda:0")
     pipe = StableDiffusionControlNetPipeline.from_pretrained(
-        "runwayml/stable-diffusion-v1-5", controlnet=controlnet, safety_checker=None, torch_dtype=torch.float16
+        "runwayml/stable-diffusion-v1-5", controlnet=controlnet, safety_checker=None
     ).to("cuda:0")
     
 
