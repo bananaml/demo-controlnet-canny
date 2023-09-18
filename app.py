@@ -26,9 +26,9 @@ def init():
 
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
-    model = context.json.get("model")
-    pipe = context.json.get("pipe")
-    image = request.json.get("image")
+    model = context.get("model")
+    pipe = context.get("pipe")
+    image = request.get("image")
     image = load_image(image)
     image = np.array(image)
     low_threshold = 100
