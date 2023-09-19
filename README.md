@@ -17,11 +17,12 @@ You can fork this repository and deploy it on Banana as is, or customize it base
 ## Running after deploying
 
 1. Wait for the model to build after creating it.
-2. Make an API request using one of the provided snippets in your Banana dashboard. However, instead of sending a prompt as provided in the snippet, send your image url as follows:
+2. Make an API request using one of the provided snippets in your Banana dashboard. However, instead of sending a prompt as provided in the snippet, send your image url together with the prompt for the image as follows:
 
 ```python
 inputs = {
-    "image": "your_image_url"
+    "image": "your_image_url",
+    "prompt" "your_prompt"
 }
 ```
 

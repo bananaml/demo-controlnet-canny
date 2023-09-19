@@ -27,6 +27,7 @@ def init():
 def handler(context: dict, request: Request) -> Response:
     pipe = context.get("pipe")
     image = request.json.get("image")
+    prompt = request.json.get("prompt")
     image = load_image(image)
     image = np.array(image)
     low_threshold = 100
@@ -36,7 +37,7 @@ def handler(context: dict, request: Request) -> Response:
     image = np.concatenate([image, image, image], axis=2)
     image = Image.fromarray(image)
     pipe.scheduler = UniPCMultistepScheduler.from_config(pipe.scheduler.config)
-    image = pipe("image", image, num_inference_steps=20).images[0]
+    image = pipe(prompt, image, num_inference_steps=20).images[0]
     buffered = BytesIO()
     image.save(buffered, format="PNG")
     img_str = base64.b64encode(buffered.getvalue())
