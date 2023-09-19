@@ -19,14 +19,12 @@ def init():
         "runwayml/stable-diffusion-v1-5", controlnet=controlnet, safety_checker=None
     ).to("cuda:0")
     context = {
-        "model": controlnet, 
         "pipe": pipe
     }
     return context
 
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
-    model = context.get("model")
     pipe = context.get("pipe")
     image = request.json.get("image")
     image = load_image(image)
